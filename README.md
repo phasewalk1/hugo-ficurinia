@@ -1,6 +1,6 @@
 ![logo](static/logo.svg)
 
-# Ficurinia
+# [Ficurinia](https://gitlab.com/gabmus/hugo-ficurinia)
 
 A prickly blog theme for Hugo
 
