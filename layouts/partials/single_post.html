@@ -12,6 +12,7 @@
     {{ if and (.Params.toc | default false) (.Site.Params.tocBeforeImage | default false) }}
         {{- partial "toc.html" . -}}
     {{ end }}
+    <!--
     {{ if .Params.Image }}
         <figure style="margin: 0">
             {{ if or (hasPrefix .Params.Image "/") (hasPrefix .Params.Image "http://") (hasPrefix .Params.Image "https://") }}
@@ -26,6 +27,7 @@
             {{ end }}
         </figure>
     {{ end }}
+    -->
     {{ if and (.Params.toc | default false) (not (.Site.Params.tocBeforeImage | default false)) }}
         {{- partial "toc.html" . -}}
     {{ end }}

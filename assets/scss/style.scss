@@ -18,6 +18,25 @@ $light_accent:     {{ $colors.light.accent     | default "#db5793" }};
 $light_sidebar_bg: {{ $colors.light.sidebar.bg | default "#e6e6e6" }};
 $light_sidebar_fg: {{ $colors.light.sidebar.fg | default "#121211" }};
 
+.img-left-align {
+    float: left;
+    margin-right: 1em;
+}
+
+.img-right-align {
+    float: right;
+    margin-left: 1em;
+}
+
+.img-right-align-small {
+    float: right;
+    margin-left: 1.1em;
+    width: 50%;
+    height: 50%;
+    font-size: 14px;
+    text-align: center;
+}
+
 :root {
     --dark_bg:          #{$dark_bg};
     --dark_hl_bg:       #{$dark_hl_bg};
