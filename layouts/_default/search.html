@@ -7,6 +7,8 @@
 </div>
 {{- partial "js_paginator.html" . -}}
 <script>
+    var noResultsFound = '{{ i18n "noResultsFound" | safeJS }}';
+
     function matchTags(page, term) {
         for (let tag of page.tags) {
             if (tag.includes(term)) return true;
@@ -25,7 +27,7 @@
             ));
             if (articles.length > 0) renderArticles(articles);
             else document.getElementById('postlist').innerHTML = `
-                <h3>{{ i18n "noResultsFound" | safeJS }}</h3>
+                <h3>' + noResultsFound + '</h3>
             `;
         });
     }
