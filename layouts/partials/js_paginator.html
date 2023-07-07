@@ -1,7 +1,15 @@
 <script>
+    var tagsI18n = '{{ i18n "tags" }}';
+    var dateI18n = '{{ i18n "date" }}';
+    var continueReadingI18n = '{{ i18n "continueReading" }}';
+    var siteParamsTagsInArticlePreview = {{ .Site.Params.tagsInArticlePreview | default true }};
+    var siteParamsImageInArticlePreview = {{ .Site.Params.imageInArticlePreview }};
+    var siteParamsArticleSummary = {{ .Site.Params.articleSummary | default true }};
+
     function renderTags(tags) {
         if (tags.length <= 0) return '';
-        let res = `| <span title='{{ i18n "tags" | safeJS }}'> </span>`;
+        
+        let res = `| <span title='${tagsI18n}'> </span>`;
         for (let tag of tags) {
             //                                        regular space
             res += `<a href="/tags/${tag}">#${tag}</a>&#32;`;
@@ -20,21 +28,15 @@
                     <a href="${article.link}">${article.title}</a>
                 </h2>
                 <p class="date">
-                    <span title='{{ i18n "date" | safeJS }}'> </span>
+                    <span title='${dateI18n}'> </span>
                     ${article.date}
-                    {{ if (.Site.Params.tagsInArticlePreview | default true) }}
-                        ${renderTags(article.tags)}
-                    {{ end }}
+                    ${siteParamsTagsInArticlePreview ? renderTags(article.tags) : ''}
                 </p>
-                {{ if .Site.Params.imageInArticlePreview }}
-                    ${renderImage(article.image, article.link, article.imageAlt)}
-                {{ end }}
-                {{ if (site.Params.articleSummary | default true) }}
-                    <div class="articlePreview">
-                        <p>${article.summary}</p>
-                        <p><a href="${article.link}">{{ i18n "continueReading" | safeJS }} </a></p>
-                    </div>
-                {{ end }}
+                ${siteParamsImageInArticlePreview ? renderImage(article.image, article.link, article.imageAlt) : ''}
+                ${siteParamsArticleSummary ? `<div class="articlePreview">
+                    <p>${article.summary}</p>
+                    <p><a href="${article.link}">${continueReadingI18n} </a></p>
+                </div>` : ''}
             </div>
             <hr />
         </article>
@@ -45,3 +47,4 @@
         document.getElementById('postlist').innerHTML += rendered;
     }
 </script>
+
