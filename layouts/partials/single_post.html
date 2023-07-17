@@ -9,13 +9,13 @@
             {{- partial "date.html" .Date -}}
         </p>
     {{ end }}
-    {{ if and (.Params.toc | default false) (.Site.Params.tocBeforeImage | default false) }}
-        {{- partial "toc.html" . -}}
-    {{ end }}
     {{ if .Params.Description }}
       <p align="center">
        <q>{{ .Params.Description }}</q>
       </p>
+    {{ end }}
+    {{ if and (.Params.toc | default false) (.Site.Params.tocBeforeImage | default false) }}
+        {{- partial "toc.html" . -}}
     {{ end }}
     {{ if .Params.Image }}
         <figure style="margin: 0">
