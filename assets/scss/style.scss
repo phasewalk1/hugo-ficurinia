@@ -37,6 +37,16 @@ $light_sidebar_fg: {{ $colors.light.sidebar.fg | default "#121211" }};
     text-align: center;
 }
 
+.content-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.large-content-image {
+  max-width: 1000px;
+  height: auto;
+}
+
 :root {
     --dark_bg:          #{$dark_bg};
     --dark_hl_bg:       #{$dark_hl_bg};
